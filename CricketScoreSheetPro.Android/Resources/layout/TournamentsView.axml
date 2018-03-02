@@ -3,5 +3,72 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+  <EditText
+      android:id="@+id/searchTournament"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_margin="5dp"
+      android:hint="Search Tournament"
+      android:visibility="gone"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:drawableLeft="@drawable/action_search"
+      android:background="@color/grey" />
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="40dp"
+      android:background="@drawable/Style_TitleBar"
+      android:weightSum="100">
+    <TextView
+        android:text="Player"
+        android:textStyle="bold"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="5dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="35" />
+    <TextView
+        android:text="Mat"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10" />
+    <TextView
+        android:text="Inns"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10" />
+    <TextView
+        android:text="Runs"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10" />
+    <TextView
+        android:text="HS"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10" />
+    <TextView
+        android:text="SR"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="13" />
+    <TextView
+        android:text="Avg"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="12" />
+  </LinearLayout>
 </LinearLayout>

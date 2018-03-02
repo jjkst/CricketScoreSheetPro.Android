@@ -6,6 +6,7 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.Widget;
 using Android.Support.Design.Widget;
 using CricketScoreSheetPro.Android.Fragments;
+using Android.Views;
 
 namespace CricketScoreSheetPro.Android
 {
@@ -41,36 +42,75 @@ namespace CricketScoreSheetPro.Android
             _drawerLayout.AddDrawerListener(_drawerToggle);
             _drawerToggle.SyncState();
 
-            var ft = _fragmentManager.BeginTransaction();
-            ft.Add(Resource.Id.content_frame, new HomeFragment());
-            ft.Commit();
+            var prevFragment = _fragmentManager.FindFragmentById(Resource.Id.content_frame);
+            if (prevFragment == null)
+            {
+                var ft = _fragmentManager.BeginTransaction();
+                ft.Add(Resource.Id.content_frame, new HomeFragment());
+                ft.Commit();
+            }
         }
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-            var ft = FragmentManager.BeginTransaction();
+            var ft = _fragmentManager.BeginTransaction();
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
                     SupportActionBar.SetTitle(Resource.String.ApplicationName);
                     ft.Replace(Resource.Id.content_frame, new HomeFragment());
                     break;
-                //case (Resource.Id.nav_tournaments):
-                //    SupportActionBar.SetTitle(Resource.String.CompletedMatches);
-                //    ft.Replace(Resource.Id.content_frame, new MatchesFragment());
-                //    break;
-                //case (Resource.Id.nav_batsmanstats):
-                //    SupportActionBar.SetTitle(Resource.String.BatsmanStats);
-                //    ft.Replace(Resource.Id.content_frame, new BatsmanStatsFragment());
-                //    break;
-                //case (Resource.Id.nav_bowlerstats):
-                //    SupportActionBar.SetTitle(Resource.String.BowlerStats);
-                //    ft.Replace(Resource.Id.content_frame, new BowlerStatsFragment());
-                //    break;
+                case (Resource.Id.nav_tournaments):
+                    SupportActionBar.SetTitle(Resource.String.Tournaments);
+                    this.InvalidateOptionsMenu();
+                    ft.Replace(Resource.Id.content_frame, new TournamentsFragment());
+                    break;
+                    //case (Resource.Id.nav_batsmanstats):
+                    //    SupportActionBar.SetTitle(Resource.String.BatsmanStats);
+                    //    ft.Replace(Resource.Id.content_frame, new BatsmanStatsFragment());
+                    //    break;
+                    //case (Resource.Id.nav_bowlerstats):
+                    //    SupportActionBar.SetTitle(Resource.String.BowlerStats);
+                    //    ft.Replace(Resource.Id.content_frame, new BowlerStatsFragment());
+                    //    break;
             }
             ft.Commit();
             _drawerLayout.CloseDrawers();
         }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu, menu);
+            menu.FindItem(Resource.Id.searchText).SetVisible(false);
+            if (SupportActionBar.Title == Resources.GetString(Resource.String.Tournaments))
+            {
+                menu.FindItem(Resource.Id.searchText).SetVisible(true);
+            }
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.home:
+                    OnBackPressed();
+                    return true;
+                case Resource.Id.action_help:
+                    return true;
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
+        public override void OnBackPressed()
+        {
+            if (_fragmentManager.BackStackEntryCount != 0)
+                _fragmentManager.PopBackStack();
+            else
+                base.OnBackPressed();
+        }
+
     }
 }
 

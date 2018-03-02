@@ -24,10 +24,10 @@ namespace CricketScoreSheetPro.Android.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View rootView = inflater.Inflate(Resource.Layout.HomeView, container, false);
+            View view = inflater.Inflate(Resource.Layout.HomeView, container, false);
 
-            mNewGameButton = rootView.FindViewById<Button>(Resource.Id.newgameButton);
-            mSavedGameButton = rootView.FindViewById<Button>(Resource.Id.savedgamesButton);
+            mNewGameButton = view.FindViewById<Button>(Resource.Id.newgameButton);
+            mSavedGameButton = view.FindViewById<Button>(Resource.Id.savedgamesButton);
 
             //mNewGameButton.Click += (object sender, EventArgs args) =>
             //{
@@ -43,7 +43,7 @@ namespace CricketScoreSheetPro.Android.Fragments
             //    StartActivity(matchActivity);
             //};
 
-            return rootView;
+            return view;
         }
     }
 }

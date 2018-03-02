@@ -210,7 +210,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\anim\SlideUp.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\give_access.svg" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\action_add.png" />
   </ItemGroup>
