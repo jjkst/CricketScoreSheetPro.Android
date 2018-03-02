@@ -2231,11 +2231,11 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f020070
 			public const int notification_icon_background = 2130837616;
 			
-			// aapt resource value: 0x7f02007a
-			public const int notification_template_icon_bg = 2130837626;
-			
 			// aapt resource value: 0x7f02007b
-			public const int notification_template_icon_low_bg = 2130837627;
+			public const int notification_template_icon_bg = 2130837627;
+			
+			// aapt resource value: 0x7f02007c
+			public const int notification_template_icon_low_bg = 2130837628;
 			
 			// aapt resource value: 0x7f020071
 			public const int notification_tile_bg = 2130837617;
@@ -2256,13 +2256,16 @@ namespace CricketScoreSheetPro.Android
 			public const int Style_Button = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int Style_GreenTitleBar = 2130837623;
+			public const int Style_EditText = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int Style_Spinner = 2130837624;
+			public const int Style_GreenTitleBar = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int Style_TitleBar = 2130837625;
+			public const int Style_Spinner = 2130837625;
+			
+			// aapt resource value: 0x7f02007a
+			public const int Style_TitleBar = 2130837626;
 			
 			static Drawable()
 			{
@@ -2280,11 +2283,11 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f07008a
 			public const int action0 = 2131165322;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int action_addbatsman = 2131165352;
+			// aapt resource value: 0x7f0700ac
+			public const int action_addbatsman = 2131165356;
 			
-			// aapt resource value: 0x7f0700a9
-			public const int action_addbowler = 2131165353;
+			// aapt resource value: 0x7f0700ad
+			public const int action_addbowler = 2131165357;
 			
 			// aapt resource value: 0x7f070064
 			public const int action_bar = 2131165284;
@@ -2316,8 +2319,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f07008e
 			public const int action_divider = 2131165326;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int action_help = 2131165346;
+			// aapt resource value: 0x7f0700a6
+			public const int action_help = 2131165350;
 			
 			// aapt resource value: 0x7f070088
 			public const int action_image = 2131165320;
@@ -2388,8 +2391,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f070093
 			public const int chronometer = 2131165331;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int clearstorage = 2131165351;
+			// aapt resource value: 0x7f0700ab
+			public const int clearstorage = 2131165355;
 			
 			// aapt resource value: 0x7f070039
 			public const int clip_horizontal = 2131165241;
@@ -2423,6 +2426,9 @@ namespace CricketScoreSheetPro.Android
 			
 			// aapt resource value: 0x7f070047
 			public const int default_activity_button = 2131165255;
+			
+			// aapt resource value: 0x7f0700a0
+			public const int deleteplayer = 2131165344;
 			
 			// aapt resource value: 0x7f070078
 			public const int design_bottom_sheet = 2131165304;
@@ -2526,8 +2532,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f070048
 			public const int list_item = 2131165256;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int masked = 2131165344;
+			// aapt resource value: 0x7f0700a4
+			public const int masked = 2131165348;
 			
 			// aapt resource value: 0x7f07008d
 			public const int media_actions = 2131165325;
@@ -2541,17 +2547,17 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f070019
 			public const int multiply = 2131165209;
 			
-			// aapt resource value: 0x7f0700a5
-			public const int nav_batsmanstats = 2131165349;
+			// aapt resource value: 0x7f0700a9
+			public const int nav_batsmanstats = 2131165353;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int nav_bowlerstats = 2131165350;
+			// aapt resource value: 0x7f0700aa
+			public const int nav_bowlerstats = 2131165354;
 			
-			// aapt resource value: 0x7f0700a3
-			public const int nav_home = 2131165347;
+			// aapt resource value: 0x7f0700a7
+			public const int nav_home = 2131165351;
 			
-			// aapt resource value: 0x7f0700a4
-			public const int nav_tournaments = 2131165348;
+			// aapt resource value: 0x7f0700a8
+			public const int nav_tournaments = 2131165352;
 			
 			// aapt resource value: 0x7f07007b
 			public const int navigation_header_container = 2131165307;
@@ -2625,11 +2631,11 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f070040
 			public const int scrollable = 2131165248;
 			
-			// aapt resource value: 0x7f0700a1
-			public const int searchText = 2131165345;
+			// aapt resource value: 0x7f0700a5
+			public const int searchText = 2131165349;
 			
-			// aapt resource value: 0x7f07009e
-			public const int searchTournament = 2131165342;
+			// aapt resource value: 0x7f0700a1
+			public const int searchTournament = 2131165345;
 			
 			// aapt resource value: 0x7f070068
 			public const int search_badge = 2131165288;
@@ -2763,6 +2769,15 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f070077
 			public const int touch_outside = 2131165303;
 			
+			// aapt resource value: 0x7f07009e
+			public const int tournamentname = 2131165342;
+			
+			// aapt resource value: 0x7f0700a2
+			public const int tournamentsrecyclerview = 2131165346;
+			
+			// aapt resource value: 0x7f07009f
+			public const int tournamentstatus = 2131165343;
+			
 			// aapt resource value: 0x7f07000a
 			public const int transition_current_scene = 2131165194;
 			
@@ -2778,8 +2793,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f07009f
-			public const int visible = 2131165343;
+			// aapt resource value: 0x7f0700a3
+			public const int visible = 2131165347;
 			
 			// aapt resource value: 0x7f070027
 			public const int withText = 2131165223;
@@ -3033,7 +3048,10 @@ namespace CricketScoreSheetPro.Android
 			public const int toolbar = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int TournamentsView = 2130903104;
+			public const int TournamentRow = 2130903104;
+			
+			// aapt resource value: 0x7f030041
+			public const int TournamentsView = 2130903105;
 			
 			static Layout()
 			{
