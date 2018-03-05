@@ -13,6 +13,10 @@ using Android.Text;
 using CricketScoreSheetPro.Core.Models;
 using Android.Support.V7.Widget;
 using CricketScoreSheetPro.Core.ViewModels;
+using CricketScoreSheetPro.Android.Adapters;
+using CricketScoreSheetPro.Core.Services.Implementations;
+using CricketScoreSheetPro.Core.Repositories.Implementations;
+using Firebase.Database;
 
 namespace CricketScoreSheetPro.Android.Fragments
 {
@@ -36,16 +40,31 @@ namespace CricketScoreSheetPro.Android.Fragments
             SearchTournamentEditText = view.FindViewById<EditText>(Resource.Id.searchTournament);
             SearchTournamentEditText.TextChanged += SearchText_TextChanged;
 
-            TournamentsAdapter = new TournamentsAdapter();
+            //TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
+            TournamentsAdapter = new TournamentsAdapter(
+                new List<UserTournament> {
+                new UserTournament {
+                    TournamentId =  "1",
+                    TournamentName = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                new UserTournament {
+                    TournamentId =  "2",
+                    TournamentName = "Tournament Name two",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                });
             TournamentsAdapter.ItemClick += OnItemClick;
 
             TournamentsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.tournamentsrecyclerview);
             TournamentsRecyclerView.SetLayoutManager(new LinearLayoutManager(this.Activity));
             TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
 
-            //var scrollview = view.FindViewById<ScrollView>(Resource.Id.batsmanStatsListScrollView);
-            //scrollview.SmoothScrollingEnabled = true;
-            //scrollview.SmoothScrollTo(0, 0);
+            var scrollview = view.FindViewById<ScrollView>(Resource.Id.tournamentsrecyclerview_scrollview);
+            scrollview.SmoothScrollingEnabled = true;
+            scrollview.SmoothScrollTo(0, 0);
             return view;
         }
 
@@ -58,16 +77,23 @@ namespace CricketScoreSheetPro.Android.Fragments
                 else SearchTournamentEditText.Visibility = ViewStates.Gone;
                 return true;
             }
-            return base.OnOptionsItemSelected(item);  
+            return base.OnOptionsItemSelected(item);
         }
 
         private void SearchText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            List<UserTournament> matchedTournaments = (from t in ViewModel.Tournaments
-                                                        where t.TournamentName.ToLower().Contains(SearchTournamentEditText.Text.ToLower())
-                                                        select t).OrderByDescending(d=>d.AddDate).ToList();
-            TournamentsAdapter.UpdatedList(matchedTournaments);
-            TournamentsRecyclerView.SetAdapter(matchedTournaments);
+            TournamentsAdapter.FilterTournaments(SearchTournamentEditText.Text.ToLower());
+            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
+        }
+
+        private void OnItemClick(object sender, string tournamentId)
+        {
+            Bundle args = new Bundle();
+            args.PutString("TournamentId", tournamentId);
+            var ft = FragmentManager.BeginTransaction();
+            ft.AddToBackStack(null);
+            ft.Replace(Resource.Id.content_frame, new TournamentDetailFragment() { Arguments = args}, nameof(TournamentDetailFragment));
+            ft.Commit();
         }
     }
 }

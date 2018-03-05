@@ -10,9 +10,8 @@
       android:id="@+id/tournamentname"
       android:layout_height="match_parent"
       android:layout_width="0dp"
-      android:layout_weight="70"
+      android:layout_weight="75"
       android:paddingLeft="10dp"
-      android:text="Tournament Name"
       android:gravity="center_vertical"/>
   <TextView
     android:id="@+id/tournamentstatus"
@@ -20,12 +19,12 @@
     android:layout_width="0dp"
     android:layout_weight="15"
     android:paddingLeft="10dp"
-    android:text="Open"
     android:gravity="center_vertical"/>
   <Button
-      android:id="@+id/deleteplayer"
+      android:id="@+id/deletetournament"
       android:layout_height="32dp"
       android:layout_width="32dp"
+      android:gravity="center_vertical"
       android:paddingLeft="20dp"
       android:background="@drawable/action_delete" />
 </LinearLayout>

@@ -4,16 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <EditText
-      android:id="@+id/searchTournament"
-      android:layout_width="match_parent"
-      android:layout_height="40dp"
-      android:layout_margin="5dp"
-      android:hint="Search Tournament"
-      android:visibility="gone"
-      android:background="@drawable/Style_EditText" />
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/tournamentsrecyclerview"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="5dp" />
+        android:id="@+id/searchTournament"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:hint="Search Tournament"
+        android:visibility="gone"
+        android:background="@drawable/Style_EditText" />
+  <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tournamentsrecyclerview_scrollview">
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/tournamentsrecyclerview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp" />
+    </ScrollView>
 </LinearLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="ApplicationName">Cricket Score Sheet</string>
-  <string name="Tournaments">Tournaments</string>
+  <string name="TournamentsFragment">Tournaments</string>
+  <string name="TournamentDetailFragment">Tournament Detail</string>
   <string name="CompletedMatches">Completed Matches</string>
   <string name="SavedMatches">Saved Matches</string>
   <string name="BatsmanStats">Batsman Statistics</string>

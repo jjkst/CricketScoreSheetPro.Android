@@ -7,21 +7,21 @@ using Android.Support.V7.Widget;
 using Android.Support.Design.Widget;
 using CricketScoreSheetPro.Android.Fragments;
 using Android.Views;
+using System;
 
 namespace CricketScoreSheetPro.Android
 {
     [Activity(Label = "Cricket Score Sheet", Theme = "@style/MyTheme", MainLauncher = true, Icon = "@drawable/ic_launcher"
         , ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AppCompatActivity, View.IOnClickListener
     {
         private ActionBarDrawerToggle _drawerToggle;
         private DrawerLayout _drawerLayout;
-        private FragmentManager _fragmentManager;
+        public View.IOnClickListener BackButtonNavigation_Selected { get; private set; }
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            _fragmentManager = FragmentManager;
             SetContentView (Resource.Layout.Main);
 
             // Initialize toolbar
@@ -42,10 +42,10 @@ namespace CricketScoreSheetPro.Android
             _drawerLayout.AddDrawerListener(_drawerToggle);
             _drawerToggle.SyncState();
 
-            var prevFragment = _fragmentManager.FindFragmentById(Resource.Id.content_frame);
+            var prevFragment = FragmentManager.FindFragmentById(Resource.Id.content_frame);
             if (prevFragment == null)
             {
-                var ft = _fragmentManager.BeginTransaction();
+                var ft = FragmentManager.BeginTransaction();
                 ft.Add(Resource.Id.content_frame, new HomeFragment());
                 ft.Commit();
             }
@@ -53,17 +53,17 @@ namespace CricketScoreSheetPro.Android
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-            var ft = _fragmentManager.BeginTransaction();
+            var ft = FragmentManager.BeginTransaction();
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
                     SupportActionBar.SetTitle(Resource.String.ApplicationName);
-                    ft.Replace(Resource.Id.content_frame, new HomeFragment());
+                    ft.Replace(Resource.Id.content_frame, new HomeFragment(), nameof(HomeFragment));
+                    FragmentManager.PopBackStackImmediate(null, PopBackStackFlags.Inclusive);
                     break;
-                case (Resource.Id.nav_tournaments):
-                    SupportActionBar.SetTitle(Resource.String.Tournaments);
-                    this.InvalidateOptionsMenu();
-                    ft.Replace(Resource.Id.content_frame, new TournamentsFragment());
+                case (Resource.Id.nav_tournaments):                    
+                    ft.Detach(FragmentManager.FindFragmentById(Resource.Id.content_frame));
+                    ft.Replace(Resource.Id.content_frame, new TournamentsFragment(), nameof(TournamentsFragment));
                     break;
                     //case (Resource.Id.nav_batsmanstats):
                     //    SupportActionBar.SetTitle(Resource.String.BatsmanStats);
@@ -80,13 +80,35 @@ namespace CricketScoreSheetPro.Android
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu, menu);
-            menu.FindItem(Resource.Id.searchText).SetVisible(false);
-            if (SupportActionBar.Title == Resources.GetString(Resource.String.Tournaments))
-            {
-                menu.FindItem(Resource.Id.searchText).SetVisible(true);
-            }
+            MenuInflater.Inflate(Resource.Menu.menu, menu);           
             return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            menu.FindItem(Resource.Id.searchText).SetVisible(false);
+            _drawerToggle.DrawerIndicatorEnabled = true;
+            var currentfragment = FragmentManager.FindFragmentById(Resource.Id.content_frame);
+            switch (currentfragment.Tag)
+            {
+                case nameof(TournamentsFragment):
+                    SupportActionBar.SetTitle(Resource.String.TournamentsFragment);
+                    menu.FindItem(Resource.Id.searchText).SetVisible(true);
+                    break;
+                case nameof(TournamentDetailFragment):
+                    SupportActionBar.SetTitle(Resource.String.TournamentDetailFragment);
+                    _drawerToggle.DrawerIndicatorEnabled = false;
+                    SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+                    BackButtonNavigation_Selected = _drawerToggle.ToolbarNavigationClickListener;
+                    BackButtonNavigation_Selected.OnClick(FindViewById<Toolbar>(Resource.Id.toolbar));
+                    break;
+            }
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public void OnClick(View v)
+        {
+            throw new NotImplementedException();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -105,8 +127,8 @@ namespace CricketScoreSheetPro.Android
 
         public override void OnBackPressed()
         {
-            if (_fragmentManager.BackStackEntryCount != 0)
-                _fragmentManager.PopBackStack();
+            if (FragmentManager.BackStackEntryCount != 0)
+                FragmentManager.PopBackStack();
             else
                 base.OnBackPressed();
         }

@@ -114,8 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\TournamentsAdapter.cs" />
     <Compile Include="Fragments\HomeFragment.cs" />
+    <Compile Include="Fragments\TournamentDetailFragment.cs" />
     <Compile Include="Fragments\TournamentsFragment.cs" />
+    <Compile Include="Instance.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +139,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\TournamentsView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TournamentRow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TournamentDetailView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
