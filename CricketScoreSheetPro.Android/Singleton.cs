@@ -19,13 +19,27 @@ using CricketScoreSheetPro.Core.Services.Interfaces;
 
 namespace CricketScoreSheetPro.Android
 {
-    public class Instance
+    public class Singleton
     {
+        private static readonly Singleton instance = new Singleton();
+
+        private Singleton() { }
+
+        public static Singleton Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         private FirebaseClient _client { get; } = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
 
         private IRepository<Tournament> _tournamentRepository => new TournamentRepository(_client);
         private IRepository<UserTournament> _usertournamentRepository => new UserTournamentRepository(_client, "");
         private ITournamentService _tournamentService => new TournamentService(_tournamentRepository, _usertournamentRepository);
+
+        public string TournamentId {private get; set; }
         private TournamentsViewModel tournamentsViewModel;
         public TournamentsViewModel TournamentsViewModel
         {
@@ -41,8 +55,8 @@ namespace CricketScoreSheetPro.Android
         {
             get
             {
-                if (_tournamentDetailViewModel == null)
-                    _tournamentDetailViewModel = new TournamentDetailViewModel(_tournamentService, "");
+                if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != TournamentId)
+                    _tournamentDetailViewModel = new TournamentDetailViewModel(_tournamentService, TournamentId);
                 return _tournamentDetailViewModel;
             }
         }

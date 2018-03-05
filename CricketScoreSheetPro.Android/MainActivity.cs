@@ -13,11 +13,10 @@ namespace CricketScoreSheetPro.Android
 {
     [Activity(Label = "Cricket Score Sheet", Theme = "@style/MyTheme", MainLauncher = true, Icon = "@drawable/ic_launcher"
         , ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity, View.IOnClickListener
+    public class MainActivity : AppCompatActivity
     {
         private ActionBarDrawerToggle _drawerToggle;
         private DrawerLayout _drawerLayout;
-        public View.IOnClickListener BackButtonNavigation_Selected { get; private set; }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -95,20 +94,8 @@ namespace CricketScoreSheetPro.Android
                     SupportActionBar.SetTitle(Resource.String.TournamentsFragment);
                     menu.FindItem(Resource.Id.searchText).SetVisible(true);
                     break;
-                case nameof(TournamentDetailFragment):
-                    SupportActionBar.SetTitle(Resource.String.TournamentDetailFragment);
-                    _drawerToggle.DrawerIndicatorEnabled = false;
-                    SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-                    BackButtonNavigation_Selected = _drawerToggle.ToolbarNavigationClickListener;
-                    BackButtonNavigation_Selected.OnClick(FindViewById<Toolbar>(Resource.Id.toolbar));
-                    break;
             }
             return base.OnPrepareOptionsMenu(menu);
-        }
-
-        public void OnClick(View v)
-        {
-            throw new NotImplementedException();
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

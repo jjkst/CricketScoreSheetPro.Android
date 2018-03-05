@@ -17,6 +17,7 @@ using CricketScoreSheetPro.Android.Adapters;
 using CricketScoreSheetPro.Core.Services.Implementations;
 using CricketScoreSheetPro.Core.Repositories.Implementations;
 using Firebase.Database;
+using CricketScoreSheetPro.Android.Activity;
 
 namespace CricketScoreSheetPro.Android.Fragments
 {
@@ -88,12 +89,9 @@ namespace CricketScoreSheetPro.Android.Fragments
 
         private void OnItemClick(object sender, string tournamentId)
         {
-            Bundle args = new Bundle();
-            args.PutString("TournamentId", tournamentId);
-            var ft = FragmentManager.BeginTransaction();
-            ft.AddToBackStack(null);
-            ft.Replace(Resource.Id.content_frame, new TournamentDetailFragment() { Arguments = args}, nameof(TournamentDetailFragment));
-            ft.Commit();
+            var detailActivity = new Intent(this.Activity, typeof(TournamentDetailActivity));
+            detailActivity.PutExtra("TournamentId", tournamentId);
+            StartActivity(detailActivity);
         }
     }
 }

@@ -2174,26 +2174,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f02005d
 			public const int avd_hide_password = 2130837597;
 			
-			// aapt resource value: 0x7f02007d
-			public const int avd_hide_password_1 = 2130837629;
-			
-			// aapt resource value: 0x7f02007e
-			public const int avd_hide_password_2 = 2130837630;
-			
-			// aapt resource value: 0x7f02007f
-			public const int avd_hide_password_3 = 2130837631;
-			
 			// aapt resource value: 0x7f02005e
 			public const int avd_show_password = 2130837598;
-			
-			// aapt resource value: 0x7f020080
-			public const int avd_show_password_1 = 2130837632;
-			
-			// aapt resource value: 0x7f020081
-			public const int avd_show_password_2 = 2130837633;
-			
-			// aapt resource value: 0x7f020082
-			public const int avd_show_password_3 = 2130837634;
 			
 			// aapt resource value: 0x7f02005f
 			public const int background_cricfield = 2130837599;
@@ -3131,7 +3113,7 @@ namespace CricketScoreSheetPro.Android
 			public const int SavedMatches = 2131230765;
 			
 			// aapt resource value: 0x7f08002b
-			public const int TournamentDetailFragment = 2131230763;
+			public const int TournamentDetailActivity = 2131230763;
 			
 			// aapt resource value: 0x7f08002a
 			public const int TournamentsFragment = 2131230762;

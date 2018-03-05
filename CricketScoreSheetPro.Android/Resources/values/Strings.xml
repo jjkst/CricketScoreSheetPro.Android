@@ -2,7 +2,7 @@
 <resources>
   <string name="ApplicationName">Cricket Score Sheet</string>
   <string name="TournamentsFragment">Tournaments</string>
-  <string name="TournamentDetailFragment">Tournament Detail</string>
+  <string name="TournamentDetailActivity">Tournament Detail</string>
   <string name="CompletedMatches">Completed Matches</string>
   <string name="SavedMatches">Saved Matches</string>
   <string name="BatsmanStats">Batsman Statistics</string>
