@@ -34,7 +34,6 @@ namespace CricketScoreSheetPro.Android.Activity
         {
             base.OnResume();
             var tournamentId = Intent.GetStringExtra("TournamentId");
-            Singleton.Instance.TournamentId = tournamentId;
             SetTournament();
         }
 

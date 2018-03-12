@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"              
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,14 +12,19 @@
         android:hint="Search Tournament"
         android:visibility="gone"
         android:background="@drawable/Style_EditText" />
-  <ScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tournamentsrecyclerview"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tournamentsrecyclerview_scrollview">
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/tournamentsrecyclerview"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="5dp" />
-    </ScrollView>
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" />   
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_action_button_fab_with_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:src="@drawable/ic_plus"
+        app:elevation="4dp" />
 </LinearLayout>

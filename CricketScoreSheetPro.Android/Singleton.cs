@@ -21,6 +21,7 @@ namespace CricketScoreSheetPro.Android
 {
     public class Singleton
     {
+        #region Singleton
         private static readonly Singleton instance = new Singleton();
 
         private Singleton() { }
@@ -33,13 +34,16 @@ namespace CricketScoreSheetPro.Android
             }
         }
 
-        private FirebaseClient _client { get; } = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
+        #endregion Singleton
 
-        private IRepository<Tournament> _tournamentRepository => new TournamentRepository(_client);
-        private IRepository<UserTournament> _usertournamentRepository => new UserTournamentRepository(_client, "");
-        private ITournamentService _tournamentService => new TournamentService(_tournamentRepository, _usertournamentRepository);
+        public FirebaseClient _client { get; set; } = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
+        public string UniqueUserId { get; set; } = "UUID";
 
-        public string TournamentId {private get; set; }
+        #region Tournament
+        private ITournamentService _tournamentService => new TournamentService(
+            new TournamentRepository(_client, UniqueUserId), 
+            new TournamentDetailRepository(_client));
+
         private TournamentsViewModel tournamentsViewModel;
         public TournamentsViewModel TournamentsViewModel
         {
@@ -50,15 +54,16 @@ namespace CricketScoreSheetPro.Android
                 return tournamentsViewModel;
             }
         }
+
         private TournamentDetailViewModel _tournamentDetailViewModel;
-        public TournamentDetailViewModel TournamentDetailViewModel
+        public TournamentDetailViewModel TournamentDetailViewModel(string tournamentId)
         {
-            get
-            {
-                if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != TournamentId)
-                    _tournamentDetailViewModel = new TournamentDetailViewModel(_tournamentService, TournamentId);
-                return _tournamentDetailViewModel;
-            }
+
+            if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != tournamentId)
+                _tournamentDetailViewModel = new TournamentDetailViewModel(_tournamentService, tournamentId);
+            return _tournamentDetailViewModel;
         }
+
+        #endregion Tournament
     }
 }

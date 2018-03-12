@@ -32,6 +32,7 @@ namespace CricketScoreSheetPro.Android.Fragments
         {
             SetHasOptionsMenu(true);
             base.OnCreate(savedInstanceState);
+            //ViewModel = Singleton.Instance.TournamentsViewModel;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -43,16 +44,16 @@ namespace CricketScoreSheetPro.Android.Fragments
 
             //TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
             TournamentsAdapter = new TournamentsAdapter(
-                new List<UserTournament> {
-                new UserTournament {
-                    TournamentId =  "1",
-                    TournamentName = "Tournament Name one",
+                new List<Tournament> {
+                new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
                     AddDate = DateTime.Today,
                     Status = "Open"
                     },
-                new UserTournament {
-                    TournamentId =  "2",
-                    TournamentName = "Tournament Name two",
+                new Tournament {
+                    Id =  "2",
+                    Name = "Tournament Name two",
                     AddDate = DateTime.Today,
                     Status = "Open"
                     },
@@ -63,10 +64,15 @@ namespace CricketScoreSheetPro.Android.Fragments
             TournamentsRecyclerView.SetLayoutManager(new LinearLayoutManager(this.Activity));
             TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
 
-            var scrollview = view.FindViewById<ScrollView>(Resource.Id.tournamentsrecyclerview_scrollview);
-            scrollview.SmoothScrollingEnabled = true;
-            scrollview.SmoothScrollTo(0, 0);
+            //IsRecyclerScrollable(TournamentsRecyclerView);
+          
             return view;
+        }
+
+        public bool IsRecyclerScrollable(RecyclerView recyclerView)
+        {
+            return recyclerView.ComputeHorizontalScrollRange() > recyclerView.Width
+                || recyclerView.ComputeVerticalScrollRange() > recyclerView.Height;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

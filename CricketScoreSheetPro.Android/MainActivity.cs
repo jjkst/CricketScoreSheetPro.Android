@@ -8,27 +8,28 @@ using Android.Support.Design.Widget;
 using CricketScoreSheetPro.Android.Fragments;
 using Android.Views;
 using System;
+using CricketScoreSheetPro.Android.Activity;
 
 namespace CricketScoreSheetPro.Android
 {
     [Activity(Label = "Cricket Score Sheet", Theme = "@style/MyTheme", MainLauncher = true, Icon = "@drawable/ic_launcher"
         , ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : BaseActivity
     {
         private ActionBarDrawerToggle _drawerToggle;
         private DrawerLayout _drawerLayout;
 
+        protected override int GetLayoutResourceId
+        {
+            get
+            {
+                return Resource.Layout.Main;
+            }
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView (Resource.Layout.Main);
-
-            // Initialize toolbar
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.SetTitle(Resource.String.ApplicationName);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowHomeEnabled(true);
 
             // Attach item selected handler to navigation view
             var navigationView = FindViewById<NavigationView>(Resource.Id.left_drawer);
@@ -36,7 +37,7 @@ namespace CricketScoreSheetPro.Android
 
             // Create ActionBarDrawerToggle button and add it to the toolbar
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);            
-            _drawerToggle = new ActionBarDrawerToggle(this, _drawerLayout, toolbar,
+            _drawerToggle = new ActionBarDrawerToggle(this, _drawerLayout, Toolbar,
                 Resource.String.ApplicationName, Resource.String.ApplicationName);
             _drawerLayout.AddDrawerListener(_drawerToggle);
             _drawerToggle.SyncState();
@@ -64,24 +65,12 @@ namespace CricketScoreSheetPro.Android
                     ft.Detach(FragmentManager.FindFragmentById(Resource.Id.content_frame));
                     ft.Replace(Resource.Id.content_frame, new TournamentsFragment(), nameof(TournamentsFragment));
                     break;
-                    //case (Resource.Id.nav_batsmanstats):
-                    //    SupportActionBar.SetTitle(Resource.String.BatsmanStats);
-                    //    ft.Replace(Resource.Id.content_frame, new BatsmanStatsFragment());
-                    //    break;
-                    //case (Resource.Id.nav_bowlerstats):
-                    //    SupportActionBar.SetTitle(Resource.String.BowlerStats);
-                    //    ft.Replace(Resource.Id.content_frame, new BowlerStatsFragment());
-                    //    break;
             }
             ft.Commit();
             _drawerLayout.CloseDrawers();
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu, menu);           
-            return base.OnCreateOptionsMenu(menu);
-        }
+
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
@@ -97,29 +86,7 @@ namespace CricketScoreSheetPro.Android
             }
             return base.OnPrepareOptionsMenu(menu);
         }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.home:
-                    OnBackPressed();
-                    return true;
-                case Resource.Id.action_help:
-                    return true;
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
-        }
-
-        public override void OnBackPressed()
-        {
-            if (FragmentManager.BackStackEntryCount != 0)
-                FragmentManager.PopBackStack();
-            else
-                base.OnBackPressed();
-        }
-
+       
     }
 }
 

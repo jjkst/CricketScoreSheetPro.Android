@@ -2205,67 +2205,88 @@ namespace CricketScoreSheetPro.Android
 			public const int ic_launcher = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int navigation_empty_icon = 2130837608;
+			public const int ic_plus = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_action_background = 2130837609;
+			public const int ic_vm_plus_dis = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_bg = 2130837610;
+			public const int ic_vm_plus_dk = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notification_bg_low = 2130837611;
+			public const int list_even_row = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int notification_bg_low_normal = 2130837612;
+			public const int list_odd_row = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int notification_bg_low_pressed = 2130837613;
+			public const int listview_selector_even = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int notification_bg_normal = 2130837614;
+			public const int listview_selector_odd = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int notification_bg_normal_pressed = 2130837615;
+			public const int navigation_empty_icon = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int notification_icon_background = 2130837616;
-			
-			// aapt resource value: 0x7f02007b
-			public const int notification_template_icon_bg = 2130837627;
-			
-			// aapt resource value: 0x7f02007c
-			public const int notification_template_icon_low_bg = 2130837628;
+			public const int notification_action_background = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int notification_tile_bg = 2130837617;
+			public const int notification_bg = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int notify_panel_notification_icon_bg = 2130837618;
+			public const int notification_bg_low = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int Radio_Innings = 2130837619;
+			public const int notification_bg_low_normal = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int Radio_SelectedInnings = 2130837620;
+			public const int notification_bg_low_pressed = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int Radio_UnSelectedInnings = 2130837621;
+			public const int notification_bg_normal = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int Style_Button = 2130837622;
+			public const int notification_bg_normal_pressed = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int Style_EditText = 2130837623;
+			public const int notification_icon_background = 2130837623;
+			
+			// aapt resource value: 0x7f020082
+			public const int notification_template_icon_bg = 2130837634;
+			
+			// aapt resource value: 0x7f020083
+			public const int notification_template_icon_low_bg = 2130837635;
 			
 			// aapt resource value: 0x7f020078
-			public const int Style_GreenTitleBar = 2130837624;
+			public const int notification_tile_bg = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int Style_Spinner = 2130837625;
+			public const int notify_panel_notification_icon_bg = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int Style_TitleBar = 2130837626;
+			public const int Radio_Innings = 2130837626;
+			
+			// aapt resource value: 0x7f02007b
+			public const int Radio_SelectedInnings = 2130837627;
+			
+			// aapt resource value: 0x7f02007c
+			public const int Radio_UnSelectedInnings = 2130837628;
+			
+			// aapt resource value: 0x7f02007d
+			public const int Style_Button = 2130837629;
+			
+			// aapt resource value: 0x7f02007e
+			public const int Style_EditText = 2130837630;
+			
+			// aapt resource value: 0x7f02007f
+			public const int Style_GreenTitleBar = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int Style_Spinner = 2130837632;
+			
+			// aapt resource value: 0x7f020081
+			public const int Style_TitleBar = 2130837633;
 			
 			static Drawable()
 			{
@@ -2486,6 +2507,9 @@ namespace CricketScoreSheetPro.Android
 			
 			// aapt resource value: 0x7f07003f
 			public const int @fixed = 2131165247;
+			
+			// aapt resource value: 0x7f0700a3
+			public const int floating_action_button_fab_with_listview = 2131165347;
 			
 			// aapt resource value: 0x7f070005
 			public const int home = 2131165189;
@@ -2772,11 +2796,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f07009e
 			public const int tournamentname = 2131165342;
 			
-			// aapt resource value: 0x7f0700a3
-			public const int tournamentsrecyclerview = 2131165347;
-			
 			// aapt resource value: 0x7f0700a2
-			public const int tournamentsrecyclerview_scrollview = 2131165346;
+			public const int tournamentsrecyclerview = 2131165346;
 			
 			// aapt resource value: 0x7f07009f
 			public const int tournamentstatus = 2131165343;

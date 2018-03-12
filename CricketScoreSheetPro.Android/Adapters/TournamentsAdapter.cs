@@ -19,9 +19,9 @@ namespace CricketScoreSheetPro.Android.Adapters
     public class TournamentsAdapter : RecyclerView.Adapter
     {
         public event EventHandler<string> ItemClick;
-        private List<UserTournament> _tournaments;
+        private List<Tournament> _tournaments;
 
-        public TournamentsAdapter(List<UserTournament> tournaments)
+        public TournamentsAdapter(List<Tournament> tournaments)
         {
             _tournaments = tournaments.OrderByDescending(d => d.AddDate).ToList();
         }
@@ -32,11 +32,11 @@ namespace CricketScoreSheetPro.Android.Adapters
         {
             TournamentViewHolder vh = holder as TournamentViewHolder;
 
-            vh?.ItemView.SetBackgroundColor(position % 2 == 1
-                            ? new Color(ContextCompat.GetColor(holder.ItemView.Context, Resource.Color.rowtwo))
-                            : new Color(ContextCompat.GetColor(holder.ItemView.Context, Resource.Color.rowone)));
+            vh?.ItemView.SetBackgroundResource(position % 2 == 1
+                            ? Resource.Drawable.listview_selector_even
+                            : Resource.Drawable.listview_selector_odd);
 
-            vh.Name.Text = _tournaments[position].TournamentName;
+            vh.Name.Text = _tournaments[position].Name;
             vh.Status.Text = _tournaments[position].Status;
         }
 
@@ -49,13 +49,13 @@ namespace CricketScoreSheetPro.Android.Adapters
 
         public void FilterTournaments(string searchtext)
         {
-            _tournaments = _tournaments.Where(t => t.TournamentName.ToLower().Contains(searchtext))
+            _tournaments = _tournaments.Where(t => t.Name.ToLower().Contains(searchtext))
                 .OrderByDescending(t => t.AddDate).ToList();
         }
 
         private void OnClick(int position)
         {
-            ItemClick?.Invoke(this, _tournaments[position].TournamentId);
+            ItemClick?.Invoke(this, _tournaments[position].Id);
         }
     }
 
