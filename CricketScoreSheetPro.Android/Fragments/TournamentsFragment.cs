@@ -45,13 +45,61 @@ namespace CricketScoreSheetPro.Android.Fragments
             //TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
             TournamentsAdapter = new TournamentsAdapter(
                 new List<Tournament> {
-                new Tournament {
+                    new Tournament {
                     Id =  "1",
                     Name = "Tournament Name one",
                     AddDate = DateTime.Today,
                     Status = "Open"
                     },
-                new Tournament {
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
+                    Id =  "1",
+                    Name = "Tournament Name one",
+                    AddDate = DateTime.Today,
+                    Status = "Open"
+                    },
+                    new Tournament {
                     Id =  "2",
                     Name = "Tournament Name two",
                     AddDate = DateTime.Today,

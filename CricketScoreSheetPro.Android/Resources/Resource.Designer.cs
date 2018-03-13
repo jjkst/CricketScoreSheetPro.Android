@@ -2177,26 +2177,8 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f02005e
 			public const int avd_hide_password = 2130837598;
 			
-			// aapt resource value: 0x7f020085
-			public const int avd_hide_password_1 = 2130837637;
-			
-			// aapt resource value: 0x7f020086
-			public const int avd_hide_password_2 = 2130837638;
-			
-			// aapt resource value: 0x7f020087
-			public const int avd_hide_password_3 = 2130837639;
-			
 			// aapt resource value: 0x7f02005f
 			public const int avd_show_password = 2130837599;
-			
-			// aapt resource value: 0x7f020088
-			public const int avd_show_password_1 = 2130837640;
-			
-			// aapt resource value: 0x7f020089
-			public const int avd_show_password_2 = 2130837641;
-			
-			// aapt resource value: 0x7f02008a
-			public const int avd_show_password_3 = 2130837642;
 			
 			// aapt resource value: 0x7f020060
 			public const int background_cricfield = 2130837600;
@@ -2273,11 +2255,11 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f020078
 			public const int notification_icon_background = 2130837624;
 			
-			// aapt resource value: 0x7f020083
-			public const int notification_template_icon_bg = 2130837635;
-			
 			// aapt resource value: 0x7f020084
-			public const int notification_template_icon_low_bg = 2130837636;
+			public const int notification_template_icon_bg = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int notification_template_icon_low_bg = 2130837637;
 			
 			// aapt resource value: 0x7f020079
 			public const int notification_tile_bg = 2130837625;
@@ -2286,28 +2268,31 @@ namespace CricketScoreSheetPro.Android
 			public const int notify_panel_notification_icon_bg = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int Radio_Innings = 2130837627;
+			public const int plus_add_green = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int Radio_SelectedInnings = 2130837628;
+			public const int Radio_Innings = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int Radio_UnSelectedInnings = 2130837629;
+			public const int Radio_SelectedInnings = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int Style_Button = 2130837630;
+			public const int Radio_UnSelectedInnings = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int Style_EditText = 2130837631;
+			public const int Style_Button = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int Style_GreenTitleBar = 2130837632;
+			public const int Style_EditText = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int Style_Spinner = 2130837633;
+			public const int Style_GreenTitleBar = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int Style_TitleBar = 2130837634;
+			public const int Style_Spinner = 2130837634;
+			
+			// aapt resource value: 0x7f020083
+			public const int Style_TitleBar = 2130837635;
 			
 			static Drawable()
 			{
