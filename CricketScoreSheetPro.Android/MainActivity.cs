@@ -70,8 +70,6 @@ namespace CricketScoreSheetPro.Android
             _drawerLayout.CloseDrawers();
         }
 
-
-
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
             menu.FindItem(Resource.Id.searchText).SetVisible(false);
