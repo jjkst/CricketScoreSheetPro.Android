@@ -128,6 +128,7 @@
     <Compile Include="Fragments\TeamsFragment.cs" />
     <Compile Include="Fragments\TeamStatistics.cs" />
     <Compile Include="Fragments\TournamentsFragment.cs" />
+    <Compile Include="ScrollAwareFABBehavior.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

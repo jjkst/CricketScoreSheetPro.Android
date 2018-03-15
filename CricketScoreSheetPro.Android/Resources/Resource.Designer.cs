@@ -3268,6 +3268,9 @@ namespace CricketScoreSheetPro.Android
 			// aapt resource value: 0x7f080023
 			public const int character_counter_pattern = 2131230755;
 			
+			// aapt resource value: 0x7f080038
+			public const int fab_scroll_translation_autohide_behavior = 2131230776;
+			
 			// aapt resource value: 0x7f080024
 			public const int password_toggle_content_description = 2131230756;
 			
