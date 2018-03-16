@@ -23,15 +23,13 @@
           android:layout_margin="5dp" />
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton
-        app:layout_behavior="@string/fab_scroll_translation_autohide_behavior"
         android:id="@+id/floating_action_button_fab_with_listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_gravity="bottom|right|end"  
+        android:layout_margin="16dp"        
         android:clickable="true"
-        android:src="@drawable/ic_plus"
-        app:layout_anchor="@id/tournamentsrecyclerview"
-        app:layout_anchorGravity="bottom|right|end"                
         android:tint="@android:color/white"
+        android:src="@drawable/ic_plus"                
         app:elevation="6dp" />
 </android.support.design.widget.CoordinatorLayout>

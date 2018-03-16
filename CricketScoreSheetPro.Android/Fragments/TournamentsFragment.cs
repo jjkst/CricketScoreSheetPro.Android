@@ -102,25 +102,24 @@ namespace CricketScoreSheetPro.Android.Fragments
                 });
             TournamentsAdapter.ItemClick += OnItemClick;
 
-            TournamentsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.tournamentsrecyclerview);
-            TournamentsRecyclerView.SetLayoutManager(new LinearLayoutManager(this.Activity));
-            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
-
             FloatingActionButton addTournament = view.FindViewById<FloatingActionButton>(Resource.Id.floating_action_button_fab_with_listview);
             addTournament.Click += ShowAddTournamentDialog;
-          
+
+            TournamentsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.tournamentsrecyclerview);
+            var layoutManager = new LinearLayoutManager(this.Activity);
+            var onScrollListener = new XamarinRecyclerViewOnScrollListener(layoutManager)
+            {
+                FloatingButton = addTournament
+            };
+            TournamentsRecyclerView.AddOnScrollListener(onScrollListener);
+            TournamentsRecyclerView.SetLayoutManager(layoutManager);           
+            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
             return view;
         }
 
         private void ShowAddTournamentDialog(object sender, EventArgs e)
         {
             
-        }
-
-        public bool IsRecyclerScrollable(RecyclerView recyclerView)
-        {
-            return recyclerView.ComputeHorizontalScrollRange() > recyclerView.Width
-                || recyclerView.ComputeVerticalScrollRange() > recyclerView.Height;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
