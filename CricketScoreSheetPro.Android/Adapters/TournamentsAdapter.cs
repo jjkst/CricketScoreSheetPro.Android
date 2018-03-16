@@ -38,6 +38,9 @@ namespace CricketScoreSheetPro.Android.Adapters
 
             vh.Name.Text = _tournaments[position].Name;
             vh.Status.Text = _tournaments[position].Status;
+
+            if (_tournaments[position].ImportedFlg)
+                vh.Delete.Visibility = ViewStates.Gone;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -63,13 +66,22 @@ namespace CricketScoreSheetPro.Android.Adapters
     {
         public TextView Name { get; private set; }
         public TextView Status { get; private set; }
+        public Button Delete { get; private set; }
 
         public TournamentViewHolder(View itemView, Action<int> listener)
             : base(itemView)
         {
             Name = itemView.FindViewById<TextView>(Resource.Id.tournamentname);
             Status = itemView.FindViewById<TextView>(Resource.Id.tournamentstatus);
-            itemView.Click += (sender, e) => listener(AdapterPosition);
+            Delete = itemView.FindViewById<Button>(Resource.Id.deletetournament);
+
+            Name.Click += (sender, e) => listener(AdapterPosition);
+            Delete.Click += (sender, e) => DeleteTournament(AdapterPosition);            
+        }
+
+        private void DeleteTournament(int adapterPosition)
+        {
+            throw new NotImplementedException();
         }
     }
 }

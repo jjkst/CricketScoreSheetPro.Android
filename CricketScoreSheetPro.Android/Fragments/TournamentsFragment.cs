@@ -97,7 +97,8 @@ namespace CricketScoreSheetPro.Android.Fragments
                     Id =  "2",
                     Name = "Tournament Name two",
                     AddDate = DateTime.Today,
-                    Status = "Open"
+                    Status = "Open",
+                    ImportedFlg = true
                     },
                 });
             TournamentsAdapter.ItemClick += OnItemClick;
