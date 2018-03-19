@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using CricketScoreSheetPro.Core.Repositories.Implementations;
+using CricketScoreSheetPro.Core.Services.Implementations;
+using CricketScoreSheetPro.Core.Services.Interfaces;
 using CricketScoreSheetPro.Core.ViewModels;
 using Firebase.Database;
-using CricketScoreSheetPro.Core.Services.Implementations;
-using CricketScoreSheetPro.Core.Repositories.Implementations;
-using CricketScoreSheetPro.Core.Repositories.Interfaces;
-using CricketScoreSheetPro.Core.Models;
-using CricketScoreSheetPro.Core.Services.Interfaces;
 
 namespace CricketScoreSheetPro.Android
 {
@@ -23,8 +10,13 @@ namespace CricketScoreSheetPro.Android
     {
         #region Singleton
         private static readonly Singleton instance = new Singleton();
+        private FirebaseClient _client { get; set; }
 
-        private Singleton() { }
+        private Singleton()
+        {
+            _client = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
+            _tournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+        }
 
         public static Singleton Instance
         {
@@ -36,22 +28,20 @@ namespace CricketScoreSheetPro.Android
 
         #endregion Singleton
 
-        public FirebaseClient _client { get; set; } = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
+        
         public string UniqueUserId { get; set; } = "UUID";
 
         #region Tournament
-        private ITournamentService _tournamentService => new TournamentService(
-            new TournamentRepository(_client, UniqueUserId), 
-            new TournamentDetailRepository(_client));
+        private TournamentService _tournamentService { get; set; }
 
-        private TournamentsViewModel tournamentsViewModel;
-        public TournamentsViewModel TournamentsViewModel
+        private TournamentViewModel tournamentViewModel;
+        public TournamentViewModel TournamentViewModel
         {
             get
             {
-                if (tournamentsViewModel == null)
-                    tournamentsViewModel = new TournamentsViewModel(_tournamentService);                    
-                return tournamentsViewModel;
+                if (tournamentViewModel == null)
+                    tournamentViewModel = new TournamentViewModel(_tournamentService);                    
+                return tournamentViewModel;
             }
         }
 

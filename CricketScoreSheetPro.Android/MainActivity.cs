@@ -1,14 +1,12 @@
 ﻿using Android.App;
-using Android.OS;
 using Android.Content.PM;
-using Android.Support.V7.App;
-using Android.Support.V4.Widget;
-using Android.Support.V7.Widget;
+using Android.OS;
 using Android.Support.Design.Widget;
-using CricketScoreSheetPro.Android.Fragments;
+using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Views;
-using System;
 using CricketScoreSheetPro.Android.Activity;
+using CricketScoreSheetPro.Android.Fragments;
 
 namespace CricketScoreSheetPro.Android
 {

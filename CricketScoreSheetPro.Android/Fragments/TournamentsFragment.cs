@@ -17,7 +17,7 @@ namespace CricketScoreSheetPro.Android.Fragments
 {
     public class TournamentsFragment : Fragment
     {
-        private TournamentsViewModel ViewModel { get; set; }
+        private TournamentViewModel ViewModel { get; set; }
         private EditText SearchTournamentEditText { get; set; }
         private TournamentsAdapter TournamentsAdapter;
         private RecyclerView TournamentsRecyclerView;
@@ -26,7 +26,7 @@ namespace CricketScoreSheetPro.Android.Fragments
         {
             SetHasOptionsMenu(true);
             base.OnCreate(savedInstanceState);
-            //ViewModel = Singleton.Instance.TournamentsViewModel;
+            ViewModel = Singleton.Instance.TournamentViewModel;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -36,71 +36,71 @@ namespace CricketScoreSheetPro.Android.Fragments
             SearchTournamentEditText = view.FindViewById<EditText>(Resource.Id.searchTournament);
             SearchTournamentEditText.TextChanged += SearchText_TextChanged;
 
-            //TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
-            TournamentsAdapter = new TournamentsAdapter(
-                new List<Tournament> {
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "1",
-                    Name = "Tournament Name one",
-                    AddDate = DateTime.Today,
-                    Status = "Open"
-                    },
-                    new Tournament {
-                    Id =  "2",
-                    Name = "Tournament Name two",
-                    AddDate = DateTime.Today,
-                    Status = "Open",
-                    ImportedFlg = true
-                    },
-                });
+            TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
+            //TournamentsAdapter = new TournamentsAdapter(
+            //    new List<Tournament> {
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "1",
+            //        Name = "Tournament Name one",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open"
+            //        },
+            //        new Tournament {
+            //        Id =  "2",
+            //        Name = "Tournament Name two",
+            //        AddDate = DateTime.Today,
+            //        Status = "Open",
+            //        ImportedFlg = true
+            //        },
+            //    });
             TournamentsAdapter.ItemClick += OnItemClick;
 
             FloatingActionButton addTournament = view.FindViewById<FloatingActionButton>(Resource.Id.floating_action_button_fab_with_listview);
