@@ -53,7 +53,22 @@ namespace CricketScoreSheetPro.Android.Fragments
 
         private void ShowAddTournamentDialog(object sender, EventArgs e)
         {
+            AlertDialog.Builder inputDialog = new AlertDialog.Builder(this.Activity);
+            EditText userInput = new EditText(Activity)
+            {
+                Hint = "Enter Tournament Name"
+            };
+
+            inputDialog.SetTitle("Add Tournament");
+            inputDialog.SetView(userInput);
             
+            inputDialog.SetPositiveButton("Add", (senderAlert, args) => {
+                Toast.MakeText(this.Activity, "Tournament Added. Take me to tournament detail page", ToastLength.Long).Show();              
+            });
+            inputDialog.SetNegativeButton("Cancel", (senderAlert, args) => {
+                Toast.MakeText(this.Activity, "Canceled. Go back Tournaments page", ToastLength.Long).Show();
+            });
+            inputDialog.Show();
         }
 
         private void OnItemClick(object sender, string tournamentId)

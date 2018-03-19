@@ -123,6 +123,7 @@
     <Compile Include="Fragments\BaseFragment.cs" />
     <Compile Include="Fragments\BatsmanStatistics.cs" />
     <Compile Include="Fragments\BowlerStatistics.cs" />
+    <Compile Include="Fragments\BaseDialogFrament.cs" />
     <Compile Include="Fragments\FielderStatistics.cs" />
     <Compile Include="Fragments\HomeFragment.cs" />
     <Compile Include="Fragments\MatchesFragment.cs" />
