@@ -17,7 +17,7 @@ namespace CricketScoreSheetPro.Android.Fragments
     {
         protected abstract int GetLayoutResourceId { get; }
         protected abstract void SearchText_TextChanged(object sender, TextChangedEventArgs e);
-        private EditText SearchEditText { get; set; }
+        protected EditText SearchEditText { get; set; }
 
         public override void OnCreate(Bundle savedInstanceState)
         {

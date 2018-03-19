@@ -11,19 +11,18 @@ using CricketScoreSheetPro.Android.Adapters;
 using CricketScoreSheetPro.Core.Models;
 using CricketScoreSheetPro.Core.ViewModels;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace CricketScoreSheetPro.Android.Fragments
 {
     public class TournamentsFragment : BaseFragment
     {
-        private TournamentsViewModel ViewModel { get; set; }
-        private EditText SearchTournamentEditText { get; set; }
-
         protected override int GetLayoutResourceId => Resource.Layout.TournamentsView;
 
-        private TournamentsAdapter TournamentsAdapter;
-        private RecyclerView TournamentsRecyclerView;
+        private TournamentsViewModel ViewModel { get; set; }   
+        private TournamentsAdapter TournamentsAdapter { get; set; }
+        private RecyclerView TournamentsRecyclerView { get; set; }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,9 +33,46 @@ namespace CricketScoreSheetPro.Android.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = base.OnCreateView(inflater, container, savedInstanceState);
-            //TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
-            TournamentsAdapter = new TournamentsAdapter(
-                new List<Tournament> {
+            TournamentsAdapter = new TournamentsAdapter(DummyList());
+            TournamentsAdapter.ItemClick += OnItemClick;
+
+            FloatingActionButton addTournament = view.FindViewById<FloatingActionButton>(Resource.Id.floating_action_button_fab_with_listview);
+            addTournament.Click += ShowAddTournamentDialog;
+
+            TournamentsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.tournamentsrecyclerview);
+            var layoutManager = new LinearLayoutManager(this.Activity);
+            var onScrollListener = new XamarinRecyclerViewOnScrollListener(layoutManager)
+            {
+                FloatingButton = addTournament
+            };
+            TournamentsRecyclerView.AddOnScrollListener(onScrollListener);
+            TournamentsRecyclerView.SetLayoutManager(layoutManager);           
+            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
+            return view;
+        }
+
+        private void ShowAddTournamentDialog(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void OnItemClick(object sender, string tournamentId)
+        {
+            var detailActivity = new Intent(this.Activity, typeof(TournamentDetailActivity));
+            detailActivity.PutExtra("TournamentId", tournamentId);
+            StartActivity(detailActivity);
+        }
+
+        protected override void SearchText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            IEnumerable<Tournament> tournaments = DummyList().Where(t => t.Name.ToLower().Contains(SearchEditText.Text.ToLower()));
+            TournamentsAdapter.RefreshTournaments(tournaments);
+            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
+        }
+
+        private List<Tournament> DummyList()
+        {
+            return new List<Tournament> {
                     new Tournament {
                     Id =  "1",
                     Name = "Tournament Name one",
@@ -97,41 +133,8 @@ namespace CricketScoreSheetPro.Android.Fragments
                     AddDate = DateTime.Today,
                     Status = "Open",
                     ImportedFlg = true
-                    },
-                });
-            TournamentsAdapter.ItemClick += OnItemClick;
-
-            FloatingActionButton addTournament = view.FindViewById<FloatingActionButton>(Resource.Id.floating_action_button_fab_with_listview);
-            addTournament.Click += ShowAddTournamentDialog;
-
-            TournamentsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.tournamentsrecyclerview);
-            var layoutManager = new LinearLayoutManager(this.Activity);
-            var onScrollListener = new XamarinRecyclerViewOnScrollListener(layoutManager)
-            {
-                FloatingButton = addTournament
+                    }
             };
-            TournamentsRecyclerView.AddOnScrollListener(onScrollListener);
-            TournamentsRecyclerView.SetLayoutManager(layoutManager);           
-            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
-            return view;
-        }
-
-        private void ShowAddTournamentDialog(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void OnItemClick(object sender, string tournamentId)
-        {
-            var detailActivity = new Intent(this.Activity, typeof(TournamentDetailActivity));
-            detailActivity.PutExtra("TournamentId", tournamentId);
-            StartActivity(detailActivity);
-        }
-
-        protected override void SearchText_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TournamentsAdapter.FilterTournaments(SearchTournamentEditText.Text.ToLower());
-            TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
-        }
+        }        
     }
 }

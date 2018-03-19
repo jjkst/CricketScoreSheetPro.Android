@@ -50,10 +50,9 @@ namespace CricketScoreSheetPro.Android.Adapters
             return new TournamentViewHolder(itemView, OnClick);
         }
 
-        public void FilterTournaments(string searchtext)
+        public void RefreshTournaments(IEnumerable<Tournament> tournaments)
         {
-            _tournaments = _tournaments.Where(t => t.Name.ToLower().Contains(searchtext))
-                .OrderByDescending(t => t.AddDate).ToList();
+            _tournaments = tournaments.ToList();
         }
 
         private void OnClick(int position)
