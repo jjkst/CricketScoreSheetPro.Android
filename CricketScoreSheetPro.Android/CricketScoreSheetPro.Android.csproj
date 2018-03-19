@@ -120,6 +120,7 @@
     <Compile Include="Activity\ScoreActivity.cs" />
     <Compile Include="Activity\TournamentDetailActivity.cs" />
     <Compile Include="Adapters\TournamentsAdapter.cs" />
+    <Compile Include="Fragments\BaseFragment.cs" />
     <Compile Include="Fragments\BatsmanStatistics.cs" />
     <Compile Include="Fragments\BowlerStatistics.cs" />
     <Compile Include="Fragments\FielderStatistics.cs" />

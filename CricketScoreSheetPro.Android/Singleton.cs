@@ -34,13 +34,13 @@ namespace CricketScoreSheetPro.Android
         #region Tournament
         private TournamentService _tournamentService { get; set; }
 
-        private TournamentViewModel tournamentViewModel;
-        public TournamentViewModel TournamentViewModel
+        private TournamentsViewModel tournamentViewModel;
+        public TournamentsViewModel TournamentViewModel
         {
             get
             {
                 if (tournamentViewModel == null)
-                    tournamentViewModel = new TournamentViewModel(_tournamentService);                    
+                    tournamentViewModel = new TournamentsViewModel(_tournamentService);                    
                 return tournamentViewModel;
             }
         }
