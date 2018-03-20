@@ -8,41 +8,36 @@ namespace CricketScoreSheetPro.Android
 {
     public class Singleton
     {
-        #region Singleton
-        private static readonly Singleton instance = new Singleton();
         private FirebaseClient _client { get; set; }
-
-        private Singleton()
-        {
-            _client = new FirebaseClient("https://xamarinfirebase-4a90e.firebaseio.com/");
-            _tournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
-        }
-
-        public static Singleton Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        #endregion Singleton
-
-        
+        private string FirebaseURL { get; set; } = "https://cricket-score-sheet.firebaseio.com";
         public string UniqueUserId { get; set; } = "UUID";
 
+        #region Singleton
+
+        private static readonly Singleton instance = new Singleton();
+        
+        private Singleton()
+        {
+            _client = new FirebaseClient(FirebaseURL);            
+        }
+
+        public static Singleton Instance => instance;
+
+        #endregion Singleton                
+
         #region Tournament
-        private TournamentService _tournamentService { get; set; }
+
+        public TournamentService SetTournamentService;
+        private TournamentService TournamentService()
+        {
+            return SetTournamentService ?? new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+        }
 
         private TournamentsViewModel tournamentViewModel;
-        public TournamentsViewModel TournamentViewModel
+        public TournamentsViewModel TournamentViewModel()
         {
-            get
-            {
-                if (tournamentViewModel == null)
-                    tournamentViewModel = new TournamentsViewModel(_tournamentService);                    
-                return tournamentViewModel;
-            }
+            tournamentViewModel = tournamentViewModel ?? new TournamentsViewModel(TournamentService());
+            return tournamentViewModel;
         }
 
         private TournamentDetailViewModel _tournamentDetailViewModel;
@@ -50,7 +45,7 @@ namespace CricketScoreSheetPro.Android
         {
 
             if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != tournamentId)
-                _tournamentDetailViewModel = new TournamentDetailViewModel(_tournamentService, tournamentId);
+                _tournamentDetailViewModel = new TournamentDetailViewModel(TournamentService(), tournamentId);
             return _tournamentDetailViewModel;
         }
 

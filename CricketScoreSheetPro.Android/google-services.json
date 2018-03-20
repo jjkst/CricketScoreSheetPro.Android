@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "134907573250",
+    "firebase_url": "https://cricket-score-sheet.firebaseio.com",
+    "project_id": "cricket-score-sheet",
+    "storage_bucket": "cricket-score-sheet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134907573250:android:120c2daf0974826d",
+        "android_client_info": {
+          "package_name": "com.jjkst.cricketscoresheetpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134907573250-veo82ft6fdpk9l0h8aj86mrvlib52kku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwYAS0wS8NfgcZb5TnRdzc_4-ZMitOO4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
