@@ -20,7 +20,7 @@ namespace CricketScoreSheetPro.Android.Fragments
     {
         protected override int GetLayoutResourceId => Resource.Layout.TournamentsView;
 
-        private TournamentsViewModel ViewModel { get; set; }   
+        private TournamentViewModel ViewModel { get; set; }   
         private TournamentsAdapter TournamentsAdapter { get; set; }
         private RecyclerView TournamentsRecyclerView { get; set; }
 

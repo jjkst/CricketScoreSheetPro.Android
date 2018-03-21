@@ -30,13 +30,15 @@ namespace CricketScoreSheetPro.Android
         public TournamentService SetTournamentService;
         private TournamentService TournamentService()
         {
-            return SetTournamentService ?? new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+            if (SetTournamentService == null)
+                SetTournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+            return SetTournamentService;
         }
 
-        private TournamentsViewModel tournamentViewModel;
-        public TournamentsViewModel TournamentViewModel()
+        private TournamentViewModel tournamentViewModel;
+        public TournamentViewModel TournamentViewModel()
         {
-            tournamentViewModel = tournamentViewModel ?? new TournamentsViewModel(TournamentService());
+            tournamentViewModel = tournamentViewModel ?? new TournamentViewModel(TournamentService());
             return tournamentViewModel;
         }
 
