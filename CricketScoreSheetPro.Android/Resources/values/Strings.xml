@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="ApplicationName">Cricket Score Sheet</string>
+  
   <string name="TournamentsFragment">Tournaments</string>
+  
   <string name="TournamentDetailActivity">Tournament Detail</string>
+  <string name="NameHeader">Name</string>
+  <string name="SponsorHeader">Sponsor</string>
+  <string name="StatusHeader">Status</string>
+  <string name="StartDateHeader">Start Date</string>
+  <string name="EntryFeeHeader">Entry Fee</string>
+  <string name="PrizesHeader">Prize(s)</string>
+  <string name="FacilitiesHeader">Facilities</string>
+  <string name="VenuesHeader">Venues</string>
+  <string name="TeamsHeader">Teams</string>
+  
   <string name="CompletedMatches">Completed Matches</string>
   <string name="SavedMatches">Saved Matches</string>
   <string name="BatsmanStats">Batsman Statistics</string>

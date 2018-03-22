@@ -11,8 +11,8 @@ using CricketScoreSheetPro.Android.Adapters;
 using CricketScoreSheetPro.Core.Models;
 using CricketScoreSheetPro.Core.ViewModels;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CricketScoreSheetPro.Android.Fragments
 {
@@ -20,7 +20,8 @@ namespace CricketScoreSheetPro.Android.Fragments
     {
         protected override int GetLayoutResourceId => Resource.Layout.TournamentsView;
 
-        private TournamentViewModel ViewModel { get; set; }   
+        private TournamentViewModel ViewModel { get; set; }
+        private AddDialogViewModel AddTournamentViewModel { get; set; }
         private TournamentsAdapter TournamentsAdapter { get; set; }
         private RecyclerView TournamentsRecyclerView { get; set; }
 
@@ -28,6 +29,7 @@ namespace CricketScoreSheetPro.Android.Fragments
         {
             base.OnCreate(savedInstanceState);
             ViewModel = Singleton.Instance.TournamentViewModel();
+            AddTournamentViewModel = Singleton.Instance.AddTournamentViewModel();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -54,19 +56,25 @@ namespace CricketScoreSheetPro.Android.Fragments
         private void ShowAddTournamentDialog(object sender, EventArgs e)
         {
             AlertDialog.Builder inputDialog = new AlertDialog.Builder(this.Activity);
+            inputDialog.SetTitle("Add Tournament");
+
             EditText userInput = new EditText(Activity)
             {
-                Hint = "Enter Tournament Name"
-            };
-
-            inputDialog.SetTitle("Add Tournament");
+                Hint = "Enter Tournament Name",
+                Top = 5,
+                Focusable = true,
+                ShowSoftInputOnFocus = true
+            };            
             inputDialog.SetView(userInput);
             
             inputDialog.SetPositiveButton("Add", (senderAlert, args) => {
-                Toast.MakeText(this.Activity, "Tournament Added. Take me to tournament detail page", ToastLength.Long).Show();              
+                var newtournament = AddTournamentViewModel.AddTournament(userInput.Text);
+                var detailActivity = new Intent(this.Activity, typeof(TournamentDetailActivity));
+                detailActivity.PutExtra("TournamentId", newtournament.Id);
+                StartActivity(detailActivity);
             });
             inputDialog.SetNegativeButton("Cancel", (senderAlert, args) => {
-                Toast.MakeText(this.Activity, "Canceled. Go back Tournaments page", ToastLength.Long).Show();
+                Toast.MakeText(this.Activity, "Canceled.", ToastLength.Short).Show();
             });
             inputDialog.Show();
         }

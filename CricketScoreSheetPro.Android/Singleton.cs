@@ -1,4 +1,5 @@
-﻿using CricketScoreSheetPro.Core.Repositories.Implementations;
+﻿using System;
+using CricketScoreSheetPro.Core.Repositories.Implementations;
 using CricketScoreSheetPro.Core.Services.Implementations;
 using CricketScoreSheetPro.Core.Services.Interfaces;
 using CricketScoreSheetPro.Core.ViewModels;
@@ -27,18 +28,25 @@ namespace CricketScoreSheetPro.Android
 
         #region Tournament
 
-        public TournamentService SetTournamentService;
+        private TournamentService tournamentService;
         private TournamentService TournamentService()
         {
-            if (SetTournamentService == null)
-                SetTournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
-            return SetTournamentService;
+            if (tournamentService == null)
+                tournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+            return tournamentService;
+        }
+
+        private AddDialogViewModel addTournamentViewModel;
+        public AddDialogViewModel AddTournamentViewModel()
+        {
+            addTournamentViewModel = addTournamentViewModel ?? new AddDialogViewModel(tournamentService);
+            return addTournamentViewModel;
         }
 
         private TournamentViewModel tournamentViewModel;
         public TournamentViewModel TournamentViewModel()
         {
-            tournamentViewModel = tournamentViewModel ?? new TournamentViewModel(TournamentService());
+            tournamentViewModel = tournamentViewModel ?? new TournamentViewModel(tournamentService);
             return tournamentViewModel;
         }
 
@@ -47,7 +55,7 @@ namespace CricketScoreSheetPro.Android
         {
 
             if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != tournamentId)
-                _tournamentDetailViewModel = new TournamentDetailViewModel(TournamentService(), tournamentId);
+                _tournamentDetailViewModel = new TournamentDetailViewModel(tournamentService, tournamentId);
             return _tournamentDetailViewModel;
         }
 
