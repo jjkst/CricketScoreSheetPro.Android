@@ -33,7 +33,7 @@ namespace CricketScoreSheetPro.Android.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = base.OnCreateView(inflater, container, savedInstanceState);
-            TournamentsAdapter = new TournamentsAdapter(DummyList());
+            TournamentsAdapter = new TournamentsAdapter(ViewModel.Tournaments);
             TournamentsAdapter.ItemClick += OnItemClick;
 
             FloatingActionButton addTournament = view.FindViewById<FloatingActionButton>(Resource.Id.floating_action_button_fab_with_listview);
@@ -80,7 +80,7 @@ namespace CricketScoreSheetPro.Android.Fragments
 
         protected override void SearchText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            IEnumerable<Tournament> tournaments = DummyList().Where(t => t.Name.ToLower().Contains(SearchEditText.Text.ToLower()));
+            IEnumerable<Tournament> tournaments = ViewModel.Tournaments.Where(t => t.Name.ToLower().Contains(SearchEditText.Text.ToLower()));
             TournamentsAdapter.RefreshTournaments(tournaments);
             TournamentsRecyclerView.SetAdapter(TournamentsAdapter);
         }
