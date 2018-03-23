@@ -47,8 +47,7 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CricketScoreSheetPro.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CricketScoreSheetPro.Core">
       <HintPath>..\..\CricketScoreSheetPro.Core\CricketScoreSheetPro.Core\bin\Debug\CricketScoreSheetPro.Core.dll</HintPath>
     </Reference>
     <Reference Include="Firebase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

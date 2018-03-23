@@ -17,13 +17,7 @@ namespace CricketScoreSheetPro.Android
         private ActionBarDrawerToggle _drawerToggle;
         private DrawerLayout _drawerLayout;
 
-        protected override int GetLayoutResourceId
-        {
-            get
-            {
-                return Resource.Layout.Main;
-            }
-        }
+        protected override int GetLayoutResourceId => Resource.Layout.Main;
 
         protected override void OnCreate(Bundle bundle)
         {

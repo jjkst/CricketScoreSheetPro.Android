@@ -29,10 +29,11 @@ namespace CricketScoreSheetPro.Android
         #region Tournament
 
         private TournamentService tournamentService;
-        private TournamentService TournamentService()
+        private TournamentService SetTournamentService()
         {
             if (tournamentService == null)
-                tournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), new TournamentDetailRepository(_client));
+                tournamentService = new TournamentService(new TournamentRepository(_client, UniqueUserId), 
+                    new TournamentDetailRepository(_client));
             return tournamentService;
         }
 
@@ -46,6 +47,7 @@ namespace CricketScoreSheetPro.Android
         private TournamentViewModel tournamentViewModel;
         public TournamentViewModel TournamentViewModel()
         {
+            SetTournamentService();
             tournamentViewModel = tournamentViewModel ?? new TournamentViewModel(tournamentService);
             return tournamentViewModel;
         }
@@ -53,7 +55,6 @@ namespace CricketScoreSheetPro.Android
         private TournamentDetailViewModel _tournamentDetailViewModel;
         public TournamentDetailViewModel TournamentDetailViewModel(string tournamentId)
         {
-
             if (_tournamentDetailViewModel == null || _tournamentDetailViewModel.Tournament.Id != tournamentId)
                 _tournamentDetailViewModel = new TournamentDetailViewModel(tournamentService, tournamentId);
             return _tournamentDetailViewModel;
