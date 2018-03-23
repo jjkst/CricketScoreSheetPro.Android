@@ -68,9 +68,9 @@ namespace CricketScoreSheetPro.Android.Fragments
             inputDialog.SetView(userInput);
             
             inputDialog.SetPositiveButton("Add", (senderAlert, args) => {
-                var newtournament = AddTournamentViewModel.AddTournament(userInput.Text);
+                var newtournamentKey = AddTournamentViewModel.AddTournament(userInput.Text);
                 var detailActivity = new Intent(this.Activity, typeof(TournamentDetailActivity));
-                detailActivity.PutExtra("TournamentId", newtournament.Id);
+                detailActivity.PutExtra("TournamentId", newtournamentKey);
                 StartActivity(detailActivity);
             });
             inputDialog.SetNegativeButton("Cancel", (senderAlert, args) => {

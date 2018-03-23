@@ -4,6 +4,7 @@ using CricketScoreSheetPro.Core.Services.Implementations;
 using CricketScoreSheetPro.Core.Services.Interfaces;
 using CricketScoreSheetPro.Core.ViewModels;
 using Firebase.Database;
+using Firebase.Database.Offline;
 
 namespace CricketScoreSheetPro.Android
 {
@@ -19,7 +20,7 @@ namespace CricketScoreSheetPro.Android
         
         private Singleton()
         {
-            _client = new FirebaseClient(FirebaseURL);            
+            _client = new FirebaseClient(FirebaseURL); 
         }
 
         public static Singleton Instance => instance;
